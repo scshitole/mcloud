@@ -1,0 +1,6 @@
+address  = "${addr}"
+username = "${username}"
+password = "${pwd}"
+port = "${port}"
+subnet_id = "${subnet_id}"
+
