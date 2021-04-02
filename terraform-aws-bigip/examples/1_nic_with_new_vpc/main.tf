@@ -120,7 +120,7 @@ module bigip {
     random_id.id.hex
   )
   f5_instance_count           = length(local.azs)
-  ec2_key_name                = aws_key_pair.demo.key_name
+   ec2_key_name                = var.key_name
   aws_secretmanager_secret_id = aws_secretsmanager_secret.bigip.id
   mgmt_subnet_security_group_ids = [
     module.web_server_sg.this_security_group_id,
@@ -145,7 +145,7 @@ locals {
 
 # Generate a tfvars file for AS3 installation
 data "template_file" "tfvars" {
-  template = file("../waf/terraform.tfvars.example")
+  template = file("../as3/terraform.tfvars.example")
   vars = {
     addr     = module.bigip.mgmt_public_ips[0]
     port     = "8443"
@@ -157,5 +157,5 @@ data "template_file" "tfvars" {
 
 resource "local_file" "tfvars-as3" {
   content  = data.template_file.tfvars.rendered
-  filename = "../waf/terraform.tfvars"
+  filename = "../as3/terraform.tfvars"
 }

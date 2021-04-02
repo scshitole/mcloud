@@ -5,7 +5,7 @@
     "label": "my BIG-IP declaration for declarative onboarding",
     "Common": {
         "class": "Tenant",
-        "hostname": "bigip1.example.com",
+        "hostname": "bigip12.example.com",
         "myDns": {
             "class": "DNS",
             "nameServers": [
@@ -18,6 +18,11 @@
                 "0.pool.ntp.org"
             ],
             "timezone": "UTC"
+        },
+        "myProvisioning": {
+            "class": "Provision",
+            "ltm": "nominal",
+            "asm": "nominal"
         },
         "admin": {
             "class": "User",

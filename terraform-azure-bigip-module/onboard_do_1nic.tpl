@@ -9,6 +9,11 @@
             "class": "System",
             "hostname": "${hostname}"
         },
+         "myProvisioning": {
+            "class": "Provision",
+            "ltm": "nominal",
+            "asm": "nominal"
+        },
         "myDns": {
             "class": "DNS",
             "nameServers": [

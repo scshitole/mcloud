@@ -3,7 +3,7 @@ terraform {
   required_providers {
     bigip = {
       source  = "f5networks/bigip"
-      version = "1.4.0"
+      version = "1.8.0"
     }
   }
 }
@@ -12,6 +12,11 @@ provider "bigip" {
   address  = var.address
   username = "admin"
   password = var.password
+  port= var.port
+}
+
+resource "bigip_as3" "as3-waf" {
+  as3_json = file(var.declaration)
 }
 
 
@@ -46,3 +51,4 @@ resource "aws_instance" "example" {
     Name = "scs-minstance"
   }
 }
+
