@@ -20,7 +20,7 @@ exec 2>&1
 
 mkdir -p /config/cloud
   
-curl -o /config/cloud/do_w_admin.json -s --fail --retry 60 -m 10 -L https://raw.githubusercontent.com/f5devcentral/terraform-azure-bigip-module/dev_saketha_runtimeinit/config/onboard_do.json
+curl -o /config/cloud/do_w_admin.json -s --fail --retry 60 -m 10 -L https://raw.githubusercontent.com/f5devcentral/terraform-azure-bigip-module/master/config/onboard_do.json
 
 
 ### write_files:
