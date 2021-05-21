@@ -21,3 +21,9 @@ variable "prefix" {
   type        = string
   default     = "scs-multi"
 }
+
+variable "allow_from" {
+   description = "allow to access from which subnets"
+   type = string
+   default = "0.0.0.0/0"
+}

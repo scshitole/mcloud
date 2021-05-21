@@ -3,4 +3,4 @@ username = "${username}"
 password = "${pwd}"
 port = "${port}"
 subnet_id = "${subnet_id}"
-
+vpc_id = "${vpc_id}"

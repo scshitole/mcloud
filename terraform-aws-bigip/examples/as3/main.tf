@@ -47,7 +47,8 @@ resource "aws_instance" "backend1" {
   instance_type = "t2.micro"
   private_ip    = "10.0.0.100"
   subnet_id     = var.subnet_id
-  user_data     = file("nginx.sh")
+   security_groups = [aws_security_group.nginx.id]
+   user_data     = file("nginx.sh")
   tags = {
     Name = "scs-back01"
   }
@@ -58,6 +59,7 @@ resource "aws_instance" "backend2" {
   instance_type = "t2.micro"
   private_ip    = "10.0.0.101"
   subnet_id     = var.subnet_id
+  security_groups = [aws_security_group.nginx.id]
   user_data     = file("nginx.sh")
   tags = {
     Name = "scs-back02"

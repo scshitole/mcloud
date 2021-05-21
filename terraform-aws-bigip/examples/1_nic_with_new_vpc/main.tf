@@ -122,12 +122,13 @@ module bigip {
   f5_instance_count           = length(local.azs)
    ec2_key_name                = var.key_name
   aws_secretmanager_secret_id = aws_secretsmanager_secret.bigip.id
-  mgmt_subnet_security_group_ids = [
-    module.web_server_sg.this_security_group_id,
-    module.web_server_secure_sg.this_security_group_id,
-    module.ssh_secure_sg.this_security_group_id,
-    module.bigip_mgmt_secure_sg.this_security_group_id
-  ]
+ mgmt_subnet_security_group_ids = [aws_security_group.f5.id]
+ /* mgmt_subnet_security_group_ids = [
+    #module.web_server_sg.id,
+    module.web_server_secure_sg,
+    module.ssh_secure_sg,
+    module.bigip_mgmt_secure_sg
+  ]*/
   vpc_mgmt_subnet_ids = module.vpc.public_subnets
 }
 
@@ -152,6 +153,7 @@ data "template_file" "tfvars" {
     username = "admin"
     pwd      = random_password.password.result
     subnet_id = module.vpc.public_subnets[0]
+    vpc_id = module.vpc.vpc_id
   }
 }
 
