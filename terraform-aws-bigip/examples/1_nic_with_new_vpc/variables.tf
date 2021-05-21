@@ -7,13 +7,13 @@
 
 # variable "SecretAccessKey" {}
 variable "public_key_path" {
-  default = "scs02.pub"
+  default = "scs0520.pub"
 }
 
 variable "key_name" {
   description = "AWS EC2 Key name for SSH access"
   type        = string
-  default = "scs02"
+  default = "scs0520"
 }
 
 variable "prefix" {

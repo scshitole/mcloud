@@ -4,5 +4,5 @@ variable "username" {}
 variable "address" {}
 variable "port" {}
 variable "declaration" {
- default = "as3.json"
+  default = "as3.json"
 }

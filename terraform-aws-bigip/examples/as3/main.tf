@@ -12,7 +12,7 @@ provider "bigip" {
   address  = var.address
   username = "admin"
   password = var.password
-  port= var.port
+  port     = var.port
 }
 
 resource "bigip_as3" "as3-waf" {
@@ -42,13 +42,24 @@ data "aws_ami" "ubuntu" {
 }
 
 
-resource "aws_instance" "example" {
+resource "aws_instance" "backend1" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
   private_ip    = "10.0.0.100"
   subnet_id     = var.subnet_id
+  user_data     = file("nginx.sh")
   tags = {
-    Name = "scs-minstance"
+    Name = "scs-back01"
   }
 }
 
+resource "aws_instance" "backend2" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t2.micro"
+  private_ip    = "10.0.0.101"
+  subnet_id     = var.subnet_id
+  user_data     = file("nginx.sh")
+  tags = {
+    Name = "scs-back02"
+  }
+}
