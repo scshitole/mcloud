@@ -27,3 +27,8 @@ output "password" {
 output "aws_secretmanager_secret_name" {
   value = aws_secretsmanager_secret.bigip.name
 }
+
+
+output "bigip_mgmt_private_ip" {
+value       = module.bigip.mgmt_addresses[0]
+}
